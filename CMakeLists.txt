@@ -1,21 +1,16 @@
 cmake_minimum_required(VERSION 3.13)
-project(sample C CXX ASM)
 
 set(PICO_BOARD pico2)
 
+# set(PICO_PLATFORM rp2350-arm-s)
 set(PICO_PLATFORM rp2350-riscv)
 
-set(PICO_TOOLCHAIN_PATH /opt/riscv/gcc14-rp2350-no-zcmp/)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_COLOR_DIAGNOSTICS ON)
 
-set(CMAKE_C_COMPILER /opt/riscv/gcc14-rp2350-no-zcmp/bin/riscv32-unknown-elf-gcc CACHE PATH "" FORCE)
-set(CMAKE_CXX_COMPILER /opt/riscv/gcc14-rp2350-no-zcmp/bin/riscv32-unknown-elf-g++ CACHE PATH "" FORCE)
-set(CMAKE_ASM_COMPILER /opt/riscv/gcc14-rp2350-no-zcmp/bin/riscv32-unknown-elf-gcc CACHE PATH "" FORCE)
-set(CMAKE_OBJCOPY /opt/riscv/gcc14-rp2350-no-zcmp/bin/riscv32-unknown-elf-objcopy CACHE FILEPATH "" FORCE)
-set(CMAKE_OBJDUMP /opt/riscv/gcc14-rp2350-no-zcmp/bin/riscv32-unknown-elf-objdump CACHE FILEPATH "" FORCE)
-
 include($ENV{PICO_SDK_PATH}/pico_sdk_init.cmake)
+
+project(sample C CXX ASM)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
