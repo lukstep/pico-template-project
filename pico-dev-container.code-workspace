@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "/workspaces/pico-dev-container"
+		},
+		{
+			"path": "/usr/local/picosdk/"
+		}
+	],
+}

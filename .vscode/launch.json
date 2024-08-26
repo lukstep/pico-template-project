@@ -1,0 +1,29 @@
+{
+    "inputs": [
+        {
+            "id": "ELF_PATH",
+            "type": "command",
+            "command": "shellCommand.execute",
+                "args": {
+                "command": "cat ./build/elf_path.txt",
+                "useFirstResult": "true",
+            }
+        }
+    ],
+    "version": "0.2.0",
+    "configurations": [
+    {
+        "cwd": "${workspaceRoot}",
+        "executable": "${input:ELF_PATH}",
+        "name": "Debug",
+        "type": "cortex-debug",
+        "request": "attach",
+        "gdbPath" : "/usr/bin/gdb-multiarch",
+        "objdumpPath": "/usr/bin/arm-none-eabi-objdump",
+        "gdbTarget": "host.docker.internal:3333",
+        "servertype" : "external",
+        "postAttachCommands": ["load", "tbreak main", "c"],
+        "searchDir": ["${env:PICO_SDK_PATH}"],
+    }
+    ]
+}

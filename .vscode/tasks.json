@@ -1,0 +1,51 @@
+{
+	"inputs": [
+		{
+			"id": "ELF_PATH",
+			"type": "command",
+			"command": "shellCommand.execute",
+			"args": {
+				"command": "cat ./build/elf_path.txt",
+				"useFirstResult": "true",
+			}
+		}
+	],
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cmake",
+			"label": "Build",
+			"command": "build",
+			"targets": [
+				"all"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [
+				"$gcc",
+				"$iar",
+				"$lessCompile"
+			],
+			"detail": "CMake build task"
+		},
+		{
+			"label": "Flash",
+			"detail": "Flash Rpi Pico memory",
+			"type": "shell",
+			"command": "gdb-multiarch ${input:ELF_PATH} -q -ex 'set confirm off' -ex 'target remote host.docker.internal:3333' -ex 'load' -ex 'monitor reset' -ex 'quit'",
+			"dependsOn": [
+				"CMake: build"
+			],
+			"problemMatcher": []
+		},
+		{
+			"type": "cmake",
+			"label": "CMake: clean",
+			"command": "clean",
+			"problemMatcher": [],
+			"detail": "CMake template clean task"
+		}
+	]
+}
