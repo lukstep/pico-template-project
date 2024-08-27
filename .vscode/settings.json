@@ -8,8 +8,8 @@
         "-log=verbose",
         "-pretty",
         "--background-index",
-        "--query-driver=/usr/bin/arm-none-eabi-g*",
-        "--compile-commands-dir={workspaceFolder}/build"
+        "--query-driver=/opt/riscv/gcc14-rp2350-no-zcmp/bin/riscv32-unknown-elf-gcc,/opt/riscv/gcc14-rp2350-no-zcmp/bin/riscv32-unknown-elf-g++,/usr/bin/arm-none-eabi-gcc,/usr/bin/arm-none-eabi-g++",
+        "--compile-commands-dir=${workspaceFolder}/build"
     ],
     "editor.formatOnSave": true,
     "C_Cpp.formatting": "clangFormat",

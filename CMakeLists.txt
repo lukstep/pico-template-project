@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.13)
 
+#set(PICO_BOARD pico)
+#set(PICO_BOARD pico_w)
 set(PICO_BOARD pico2)
 
+# If pico2 is selected you have to select PICO_PLATFORM
 # set(PICO_PLATFORM rp2350-arm-s)
 set(PICO_PLATFORM rp2350-riscv)
 
